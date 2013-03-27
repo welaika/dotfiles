@@ -6,7 +6,7 @@ weLaika's dotfiles
 Prerequisites: ruby.
 
 1. Clone this repo into ".dotfiles":  
-   `git clone https://github.com/welaika/dotfiles.git`
+   `git clone https://github.com/welaika/dotfiles.git ~/.dotfiles`
 2. Go into ".dotfiles" and run "rake":  
    `cd ~/.dotfiles && rake`
 
