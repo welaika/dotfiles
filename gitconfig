@@ -1,0 +1,89 @@
+# [user]
+#  name = Nome Cognome
+#  email = nome.cognome@welaika.com
+
+[alias]
+  # shortcuts
+  ci = commit
+  co = checkout
+  di = diff
+  dc = diff --cached
+  addp = add -p .
+  st = status
+  ss = status --short
+
+  # info
+  fame = shortlog -s --
+  last = log -1 HEAD
+
+  # undo
+  unadd = reset HEAD --
+  unstage = reset HEAD --
+  unch = checkout --
+  unci = reset --soft
+  rmun = clean -f
+
+  # branches
+  branches = branch -av
+  br = checkout
+  newbr = checkout -b
+  rmbr = branch -d
+  trackbr = git checkout --track
+  menoff = merge --no-ff
+
+  # assume-unchanged
+  assume = update-index --assume-unchanged
+  unassume = update-index --no-assume-unchanged
+  assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+  unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
+  assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
+
+  # log
+  l = log --oneline --decorate --graph -20
+  t = log --oneline --decorate --graph --branches --remotes -20
+  lg = log --oneline --decorate --graph --branches --remotes -20 --pretty=format:'%C(yellow)%h%C(red bold)%d %Creset%s %C(green)(%ar) %C(cyan)<%cn>' --date=relative
+
+  # list aliases
+  al = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
+
+  # tag
+  tags = tag
+  lasttag = describe --tags --abbrev=0
+
+  # others
+  reco = commit --amend
+  resolved = add
+  remotes = remote -v
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+
+[core]
+  excludesfile = ~/.gitignore
+  editor = vim
+  pager = less -r
+
+[diff]
+  tool = vimdiff
+
+[pull]
+  rebase = true
+
+[push]
+  default = simple

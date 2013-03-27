@@ -1,0 +1,3 @@
+rvm_verbose_flag=0
+rvm_debug_flag=0
+rvm_trust_rvmrcs_flag=1
