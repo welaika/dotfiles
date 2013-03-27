@@ -39,9 +39,9 @@
   assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
 
   # log
-  l = log --oneline --decorate --graph -20
-  t = log --oneline --decorate --graph --branches --remotes -20
-  lg = log --oneline --decorate --graph --branches --remotes -20 --pretty=format:'%C(yellow)%h%C(red bold)%d %Creset%s %C(green)(%ar) %C(cyan)<%cn>' --date=relative
+  l  = log --oneline --decorate --graph --branches --remotes -20
+  ll = log --oneline --decorate --stat --graph
+  t  = log --oneline --decorate --graph --branches --remotes -20 --pretty=format:'%C(yellow)%h%C(red bold)%d %Creset%s %C(green)(%ar) %C(cyan)<%cn>' --date=relative
 
   # list aliases
   al = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
