@@ -75,7 +75,7 @@
   untracked = red
 
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore_global
   editor = vim
   pager = less -r
 
