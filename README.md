@@ -3,12 +3,15 @@ weLaika's dotfiles
 
 ## Installation:
 
-Prerequisites: ruby.
+Prerequisites: ruby, rvm
 
-1. Clone this repo into ".dotfiles":  
-   `git clone https://github.com/welaika/dotfiles.git ~/.dotfiles`
-2. Go into ".dotfiles" and run "rake":  
+1. Fork 
+2. Clone your fork into ".dotfiles":  
+   `git clone https://github.com/YOURNAME/dotfiles.git ~/.dotfiles`
+3. Install:  
    `cd ~/.dotfiles && rake`
+4. Update `[user]` section in `gitconfig` file
+5. Edit to suit your needs
 
 This will backup all the dotfiles that you are using in the `~/.dotfiles/backup`
 directory and will install in your home symlinks to the dotfiles in the
