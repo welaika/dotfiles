@@ -73,6 +73,7 @@ shopt -s nocaseglob     # Pathname expansion will be treated as case-insensitive
 ## Bash completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
+fi
 
 ## Colored manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -113,3 +114,4 @@ function ex {
          echo "'$1' is not a valid file"
      fi
 }
+
