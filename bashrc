@@ -86,6 +86,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 ## RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+alias rgs='rvm gemset'
 
 ## Exports
 export HISTSIZE=10000
