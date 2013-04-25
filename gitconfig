@@ -28,7 +28,7 @@
   br = checkout
   newbr = checkout -b
   rmbr = branch -d
-  trackbr = git checkout --track
+  trackbr = checkout -t
   menoff = merge --no-ff
 
   # assume-unchanged
