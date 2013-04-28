@@ -28,7 +28,6 @@
   br = checkout
   newbr = checkout -b
   rmbr = branch -d
-  trackbr = checkout -t
   menoff = merge --no-ff
 
   # assume-unchanged
