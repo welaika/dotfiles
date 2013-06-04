@@ -27,12 +27,14 @@
 --type-set=documentation=.markdown,.md,.mdown,.mkd,.mkdn,.textile,.rdoc,.pod.txt
 --type-set=log=.log
 --type-set=json=.json
+--type-set=jade=.jade
+--type-set=styl=.styl
 
 # extend original types
 --type-add=ruby=.rake,Rakefile,Capfile,Gemfile
---type-add=html=.erb,.slim,.haml
+--type-add=html=.erb,.slim,.haml,.jade
 --type-add=js=.coffee,.json
---type-add=css=.scss,.sass
+--type-add=css=.scss,.sass,.styl
 
 # dirs to ignore
 # --ignore-dir=log
