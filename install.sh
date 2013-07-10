@@ -6,7 +6,7 @@ DOTFILES=(
 ackrc
 bashrc
 bash_profile
-curlc
+curlrc
 gemrc
 gitconfig
 gitignore_global
