@@ -21,6 +21,10 @@ function is_vim_running {
   jobs | grep -o 'vim' &> /dev/null
 }
 
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWUPSTREAM="auto"
+
 PROMPT_INFO="${WHITE}[\A] ${GREEN}\u${WHITE}(${GREEN}\h${WHITE})${NC} ${BLUE}\w"
 PROMPT_RUBY="[\$(rvm-prompt)]"
 PROMPT_GIT="${YELLOW}\$(__git_ps1)"
