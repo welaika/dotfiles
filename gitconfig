@@ -40,6 +40,7 @@
   # log
   l  = log --oneline --decorate --graph --branches --remotes -20
   ll = log --oneline --decorate --stat --graph
+  ls = log --oneline --decorate --graph --branches --remotes --simplify-by-decoration
   t  = log --oneline --decorate --graph --branches --remotes -20 --pretty=format:'%C(yellow)%h%C(red bold)%d %Creset%s %C(green)(%ar) %C(cyan)<%cn>' --date=relative
 
   # list aliases
