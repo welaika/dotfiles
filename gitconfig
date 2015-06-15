@@ -16,6 +16,8 @@
   fame = shortlog -s -n --
   allfame = shortlog -s -n --all --
   last = log -1 HEAD
+  log-file = log --follow --patch --
+
 
   # undo
   unadd = reset HEAD --
