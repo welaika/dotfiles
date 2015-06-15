@@ -13,7 +13,8 @@
   ss = status --short
 
   # info
-  fame = shortlog -s --
+  fame = shortlog -s -n --
+  allfame = shortlog -s -n --all --
   last = log -1 HEAD
 
   # undo
