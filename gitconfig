@@ -15,6 +15,8 @@
   # info
   fame = shortlog -s --
   last = log -1 HEAD
+  log-file = log --follow --patch --
+
 
   # undo
   unadd = reset HEAD --
