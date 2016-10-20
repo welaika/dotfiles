@@ -84,9 +84,18 @@
 
 [diff]
   tool = vimdiff
+  compactionHeuristic = 1
 
 [pull]
   rebase = true
 
 [push]
   default = current
+
+[pager]
+  log = 'diff-highlight | less'
+  show = 'diff-highlight | less'
+  diff = 'diff-highlight | less'
+
+[interactive]
+  diffFilter = diff-highlight
