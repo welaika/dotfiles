@@ -41,3 +41,6 @@ directory and will install in your home symlinks to the dotfiles in the
     starting with ls :)
 * rvmrc disables rvms noisy messages and whiny confermation questions
 
+## Author
+
+made with ❤️ and ☕️ by [weLaika](http://dev.welaika.com)
