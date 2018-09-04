@@ -3,7 +3,7 @@ weLaika's dotfiles configuration
 
 ## Prerequisites
 
-1. Generic deps: `brew install bash-completion vim git multitail colordiff less tree ack moreutils the_silver_searcher watch wget curl z`
+1. Generic deps: `brew install bash-completion vim git multitail colordiff less tree ack moreutils the_silver_searcher watch wget curl z ssh-copy-id`
 2. Update `[user]` section in `gitconfig` file
 3. Install rbenv
 4. Install node: `brew install node`
