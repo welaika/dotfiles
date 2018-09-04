@@ -1,4 +1,4 @@
-## Prompt colors
+## Fancy prompt
 red='\[\e[0;31m\]'
 RED='\[\e[1;31m\]'
 blue='\[\e[0;34m\]'
@@ -21,66 +21,12 @@ function is_vim_running {
   jobs | grep -o 'vim' &> /dev/null
 }
 
-GIT_PS1_SHOWDIRTYSTATE=true
-GIT_PS1_SHOWUNTRACKEDFILES=true
-GIT_PS1_SHOWUPSTREAM="auto"
+PROMPT_INFO="${white}[\A] ${green}\u${NC} ${blue}\w"
+PROMPT_RUBY="[\$(rbenv version-name)]"
+PROMPT_GIT="${green}\$(__git_ps1)"
+PROMPT_FOOTER="\n\$(is_vim_running && echo \"${red}\" || echo \"${white}\") ↳ ${green}\$ ${NC}"
 
-PROMPT_INFO="${WHITE}[\A] ${GREEN}\u${WHITE}(${GREEN}\h${WHITE})${NC} ${BLUE}\w"
-PROMPT_RUBY="[\$(rvm-prompt)]"
-PROMPT_GIT="${YELLOW}\$(__git_ps1)"
-PROMPT_FOOTER="\n\$(is_vim_running && echo \"${RED}\" || echo \"${BLACK}\")↳ ${GREEN}\$ ${NC}"
-
-PS1="\n${PROMPT_INFO} ${PROMPT_RUBY} ${PROMPT_GIT} ${PROMPT_FOOTER}"
-
-## Aliases
-
-alias l='ls -CF'
-alias ls='ls -hF --color=auto'
-alias ll='ls -hFl --color=auto'
-alias la='ls -lhAF --color=auto'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias diff='colordiff'
-alias mkdir='mkdir -p'
-alias df='df -h'
-alias du='du -hc'
-
-alias recent='ls -lhAFt --color=auto'
-alias ports='netstat -tulanp'
-alias apache2_restart='sudo service apache2 restart'
-alias mysql_restart='sudo service mysql restart'
-
-alias hk='heroku'
-
-# Expand aliases with sudo too
-alias sudo='sudo '
-
-# Security
-alias rm='rm -i --preserve-root'
-alias mv='mv -i'
-alias cp='cp -i'
-alias ln='ln -i'
-alias chown='chown --preserve-root'
-alias chmod='chmod --preserve-root'
-alias chgrp='chgrp --preserve-root'
-
-# Add an "alert" alias for long running commands.  Use like so:
-# sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-## Shopt options
-shopt -s cdspell        # This will correct minor spelling errors in cd command.
-shopt -s checkwinsize   # Check window size (rows, columns) after each command.
-shopt -s cmdhist        # Save multi-line commands in history as single line.
-shopt -s dotglob        # Include dotfile in path-name expansions.
-shopt -s histappend     # Append to history rather than overwrite.
-shopt -s nocaseglob     # Pathname expansion will be treated as case-insensitive.
-
-## Bash completion
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  . /etc/bash_completion
-fi
+PS1="${PROMPT_INFO} ${PROMPT_RUBY}${PROMPT_GIT} ${PROMPT_FOOTER}"
 
 ## Colored manpages
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -91,15 +37,61 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
-## RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-alias rgs='rvm gemset'
+## Aliases
 
-## Exports
+alias ls='ls -hFG'
+alias la='ls -lhAFG'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias diff='colordiff'
+alias mkdir='mkdir -p'
+alias df='df -h'
+alias du='du -hc'
+alias tree='tree -aAC'
+alias tailf='tail -f'
+alias update='brew update && brew upgrade && brew cleanup'
+alias npm_update='npm install npm@latest -g'
+alias recent='ls -Art | tail -n 10'
+
+# Expand aliases with sudo too
+alias sudo='sudo '
+
+# Security
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias ln='ln -i'
+alias unlink='unlink -i'
+alias rename='rename -i'
+
+
+## Shopt options
+shopt -s cdspell        # This will correct minor spelling errors in cd command.
+shopt -s checkwinsize   # Check window size (rows, columns) after each command.
+shopt -s cmdhist        # Save multi-line commands in history as single line.
+shopt -s direxpand      # Allow to type partial directory names..
+shopt -s dirspell       # ..and let bash spell them out for you.
+shopt -s dotglob        # Include dotfile in path-name expansions.
+shopt -s globstar       # Enable recursive globbing with **.
+shopt -s histappend     # Append to history rather than overwrite.
+shopt -s nocaseglob     # Pathname expansion will be treated as case-insensitive.
+stty -ixon              # Disable console start/stop: makes ^S and ^Q go through
+
+## History
 export HISTSIZE=10000
 export HISTFILESIZE=10000
-export HISTCONTROL="ignoreboth"
-export EDITOR="vim"
+export HISTCONTROL='ignoreboth'
+
+## Other exports
+export EDITOR='vim'
+export PAGER='less'
+export RUBY_CONFIGURE_OPTS='--disable-install-doc'
+export LESS='-R'
+export DISABLE_SPRING='1'
+
+## weLaika works paths
+export WORDPRESS_WORKS_PATH="$HOME/Repos"
 
 ## Extract files: depends on zip, unrar and p7zip
 function ex {
@@ -123,3 +115,51 @@ function ex {
      fi
 }
 
+function ltree()
+{
+    tree -C $* | less -R
+}
+
+function echo_last_migration {
+  migrate_path='db/migrate/'
+  nth_migration=$((${1:-0}+1))
+  echo "${migrate_path}$(ls -1t $migrate_path | head -$nth_migration | tail -1)"
+}
+
+function last_migration {
+  vim $(echo_last_migration $*)
+}
+
+function view_coverage {
+  report='coverage/index.html'
+  if [ -f "$report" ]; then
+    open "$report"
+  fi
+}
+
+function view_critics {
+  report='tmp/rubycritic/overview.html'
+  if [ -f "$report" ]; then
+    open "$report"
+  fi
+}
+
+function rubies {
+  for file in $(find . -type f -maxdepth 3 -name '.ruby-version'); do
+    echo $(cat $file) -- $file;
+  done | sort -n
+}
+
+function ports {
+  lsof -i -Pn | grep -i "listen"
+}
+
+function hosts_in_lan {
+  arp -a -n | grep -v "incomplete"
+}
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+source `brew --prefix`/etc/profile.d/z.sh

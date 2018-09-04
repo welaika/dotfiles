@@ -14,27 +14,35 @@
 --follow
 
 # additional types
+--type-set=coffee=.coffee
+--type-set=documentation=.markdown,.md,.mdown,.mkd,.mkdn,.textile,.rdoc,.pod.txt
 --type-set=erb=.erb
 --type-set=haml=.haml
---type-set=slim=.slim
+--type-set=json=.json
+--type-set=log=.log
+--type-set=markdown=.markdown,.md,.mdown,.mkd,.mkdn
 --type-set=sass=.sass
 --type-set=scss=.scss
---type-set=cucumber=.feature
---type-set=coffee=.coffee
+--type-set=slim=.slim
 --type-set=yaml=.yml
---type-set=markdown=.markdown,.md,.mdown,.mkd,.mkdn
---type-set=textile=.textile
---type-set=documentation=.markdown,.md,.mdown,.mkd,.mkdn,.textile,.rdoc,.pod.txt
---type-set=log=.log
---type-set=json=.json
---type-set=jade=.jade
---type-set=styl=.styl
 
 # extend original types
---type-add=ruby=.rake,Rakefile,Capfile,Gemfile
---type-add=html=.erb,.slim,.haml,.jade
+--type-add=css=.scss,.sass
+--type-add=html=.erb,.slim,.haml
 --type-add=js=.coffee,.json
---type-add=css=.scss,.sass,.styl
+--type-add=ruby=.rake,Rakefile,Capfile,Gemfile
+
+# files to ignore
+--ignore-file=is:gems.tags
+--ignore-file=is:tags
 
 # dirs to ignore
-# --ignore-dir=log
+--ignore-dir=.bin
+--ignore-dir=.bundle
+--ignore-dir=bower_components
+--ignore-dir=coverage
+--ignore-dir=doc
+--ignore-dir=log
+--ignore-dir=node_modules
+--ignore-dir=public/assets
+--ignore-dir=tmp

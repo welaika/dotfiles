@@ -4,14 +4,19 @@ DOTFILES_DIR=".dotfiles"
 BACKUP_DIR="backup"
 DOTFILES=(
 ackrc
-bashrc
+agignore
 bash_profile
+bashrc
 curlrc
 gemrc
 gitconfig
 gitignore_global
+iex.exs
 inputrc
-rvmrc
+irbrc
+lftprc
+multitailrc
+pryrc
 )
 
 function warn() {
@@ -19,31 +24,31 @@ function warn() {
 }
 
 function link(){
-	for script in ${DOTFILES[@]}; do
-		dotfile=${HOME}/.${script}
-		if [[ -f $dotfile ]]; then
-			warn "~/.${script} already exists"
-		else
-			ln -s ${DOTFILES_DIR}/$script $dotfile
-		fi
-	done
+        for script in ${DOTFILES[@]}; do
+                dotfile=${HOME}/.${script}
+                if [[ -f $dotfile ]]; then
+                        warn "~/.${script} already exists"
+                else
+                        ln -s ${DOTFILES_DIR}/$script $dotfile
+                fi
+        done
 }
 
 function backup(){
-	for script in ${DOTFILES[@]}; do
-		dotfile=${HOME}/.${script}
-		[[ -f $dotfile && ! -L $dotfile ]] || continue;
-		backup=${BACKUP_DIR}/${script}
-		if [[ -f $backup ]]; then
-			warn "${BACKUP_DIR}/${script} already exists"
-		else
-			mv $dotfile $backup
-		fi
-	done
+        for script in ${DOTFILES[@]}; do
+                dotfile=${HOME}/.${script}
+                [[ -f $dotfile && ! -L $dotfile ]] || continue;
+                backup=${BACKUP_DIR}/${script}
+                if [[ -f $backup ]]; then
+                        warn "${BACKUP_DIR}/${script} already exists"
+                else
+                        mv $dotfile $backup
+                fi
+        done
 }
 
 function backup_dir(){
-	[[ -d $BACKUP_DIR ]] || mkdir -p $BACKUP_DIR
+        [[ -d $BACKUP_DIR ]] || mkdir -p $BACKUP_DIR
 }
 
 ############################################

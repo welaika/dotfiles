@@ -1,0 +1,11 @@
+# When  true,  lftp checks if the host name used to connect to the
+# server corresponds to the host name in its certificate.
+set ssl:check-hostname no
+
+# If  set to yes, then verify server's certificate to be signed by
+# a  known  Certificate  Authority  and  not  be  on   Certificate
+# Revocation List.
+set ssl:verify-certificate no
+
+# Number of jobs run in parallel in a queue.
+set cmd:queue-parallel 5

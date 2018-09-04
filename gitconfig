@@ -1,37 +1,23 @@
-# [user]
-#  name = Nome Cognome
-#  email = nome.cognome@welaika.com
+[user]
+  name = Your Name
+  email = Your email
 
 [alias]
   # shortcuts
-  ci = commit
-  co = checkout
-  di = diff
-  dc = diff --cached
   addp = add -p .
+  cop = checkout -p .
+  br = branch
+  bra = branch -av
+  co = checkout
+  ci = commit
+  di = diff
+  ds = diff --staged
+  re = reset
   st = status
-  ss = status --short
 
   # info
-  fame = shortlog -s -n --
-  allfame = shortlog -s -n --all --
-  last = log -1 HEAD
   log-file = log --follow --patch --
-
-
-  # undo
-  unadd = reset HEAD --
-  unstage = reset HEAD --
-  unch = checkout --
-  unci = reset --soft
-  rmun = clean -f
-
-  # branches
-  branches = branch -av
-  br = checkout
-  newbr = checkout -b
-  rmbr = branch -d
-  menoff = merge --no-ff
+  fame = shortlog --summary --numbered --all --
 
   # assume-unchanged
   assume = update-index --assume-unchanged
@@ -40,23 +26,22 @@
   unassumeall = "!git assumed | xargs git update-index --no-assume-unchanged"
   assumeall = "!git st -s | awk {'print $2'} | xargs git assume"
 
+  restore-file = !git checkout $(git rev-list -n 1 HEAD -- "$1")^ -- "$1"
+
   # log
-  l  = log --oneline --decorate --graph --branches --remotes -20
-  ll = log --oneline --decorate --stat --graph
-  ls = log --oneline --decorate --graph --branches --remotes --simplify-by-decoration
-  t  = log --oneline --decorate --graph --branches --remotes -20 --pretty=format:'%C(yellow)%h%C(red bold)%d %Creset%s %C(green)(%ar) %C(cyan)<%cn>' --date=relative
+  l  = log --oneline --decorate --graph --branches --remotes -40
+  ll = log --oneline --decorate --graph --stat
+  ls = log --oneline --decorate --graph --branches --remotes --simplify-by-decoration -40
+  t  = log --oneline --decorate --graph --branches --remotes -40 --pretty=format:'%C(yellow)%h%C(red bold)%d %Creset%s %C(green)(%ar) %C(cyan)<%cn>' --date=relative
 
   # list aliases
   al = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /'
 
   # tag
-  tags = tag
   lasttag = describe --tags --abbrev=0
 
-  # others
-  reco = commit --amend
-  resolved = add
-  remotes = remote -v
+  # safety alias
+  pushf = push --force-with-lease
 
 [color]
   ui = auto
@@ -92,10 +77,8 @@
 [push]
   default = current
 
-[pager]
-  log = 'diff-highlight | less'
-  show = 'diff-highlight | less'
-  diff = 'diff-highlight | less'
+[rebase]
+  autostash = true
 
-[interactive]
-  diffFilter = diff-highlight
+[credential]
+  helper = osxkeychain

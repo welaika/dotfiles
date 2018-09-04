@@ -1,0 +1,18 @@
+check_mail:0
+
+# Possible colors: red, green, yellow, blue, magenta, cyan, white
+
+defaultcscheme:log
+
+# Default colorscheme for tomcat logs
+colorscheme:log
+cs_re:green:INFO
+cs_re:yellow:WARN
+cs_re:magenta:SEVERE
+cs_re:red:FATAL
+cs_re:red:ERROR
+cs_re:blue:DEBUG
+cs_re_s:blue:(\[|\]|\{|\})
+cs_re:red:"type"\:"exception"
+cs_re:red:"type"\:"sidekiq_exception"
+cs_re:red:ExceptionsService

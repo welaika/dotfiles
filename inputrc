@@ -7,6 +7,3 @@ set mark-symlinked-directories on
 "\e[3~": delete-char
 "\e[A": history-search-backward
 "\e[B": history-search-forward
-
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
