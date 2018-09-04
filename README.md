@@ -5,7 +5,7 @@ weLaika's dotfiles configuration
 
 1. Generic deps: `brew install bash-completion vim git multitail colordiff less tree ack moreutils the_silver_searcher watch wget curl z ssh-copy-id`
 2. Update `[user]` section in `gitconfig` file
-3. Install rbenv
+3. Install rbenv and ruby-build (rbenv plugin) using `brew` (read projects guides)
 4. Install node: `brew install node`
 5. Install yarn: `brew install yarn`
 
